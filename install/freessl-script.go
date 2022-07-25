@@ -72,6 +72,7 @@ func reportFreeSSLScript(done chan bool, nodeName string) {
 				"action":           "freessl",
 				"name":             nodeName,
 				"ip":               "",
+				"token":            ServerToken,
 				"domain":           ServerDomain,
 				"domain_key":       keyContent,
 				"domain_crt":       crtContent,

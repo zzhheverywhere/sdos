@@ -15,8 +15,8 @@ var freeSSlScriptCmd = &cobra.Command{
 	Short: "FreeSSL Script",
 	PreRun: func(cmd *cobra.Command, args []string) {
 
-		if install.ReportUrl == "" || install.ServerDomain == "" {
-			install.PrintError("The report-url / server-domain are required.")
+		if install.ServerToken == "" || install.ReportUrl == "" || install.ServerDomain == "" {
+			install.PrintError("The token / report-url / server-domain are required.")
 			os.Exit(0)
 		}
 
@@ -35,6 +35,7 @@ var freeSSlScriptCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(freeSSlScriptCmd)
+	freeSSlScriptCmd.Flags().StringVar(&install.ServerToken, "token", "", "Token")
 	freeSSlScriptCmd.Flags().StringVar(&install.ServerDomain, "server-domain", "", "Server domain, example: w1.abc.com")
 	freeSSlScriptCmd.Flags().StringVar(&install.ReportUrl, "report-url", "", "Report url, \"http://\" or \"https://\" prefix.")
 }
